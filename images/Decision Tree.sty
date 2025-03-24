@@ -1,0 +1,49 @@
+Decision Tree
+Decision trees are used to split data into categories and make decisions based on these categories.
+An important term in decision trees is purity, which measures the extent to which data points belong to a single,
+specific class. Maximizing purity is a key objective,
+as it ensures that the resulting nodes in the tree are as homogeneous as possible.
+
+
+The main problem in decision tree is to decide which node should be the root node .
+And to try to satisfy purity on each split as much as possible.
+
+So, when a feature is selected to be the root node it will behave as decision criterion . 
+splits are determined by this criteria.
+
+splits create subsets ,the more the values on a subset belong to a single specific class the more purity is achieved.
+------------------------------------------------------------------------------------
+So, if we finally decided which feature should be a root node.
+the data points might be : 
+
+-continous data points
+-multi categorical data points
+-multifeature data set
+ 
+how we determine the best critria to split the data by ?
+-Continouse Data points
+1- order the data points in ascending order
+2-take the midpoints to determine potential split  .
+we calculate gini impurity for each split. and we take the split with minimum gini impurity.
+
+-multi categorical data points:
+calculate gini impurity for each combination .
+----------------------------------------------------------------------------------------
+
+We can add gini impurity threshold as it contributes in both :
+1- prunning as it make the tree smaller .
+2- more biased model. overcome the overfitted model problem.
+we can also determine the maximum depth of our tree by using CV (cross validation).
+CV helps tune maximum depth, and Gini Impurity evaluates splits to decide if they 
+improve purity—but within the constraints set by hyperparameters like maximum depth.
+
+-------------------------------------------------------------------------------------------
+
+multi-featured data sets :
+in scikit learn nodes on left satisfy the condition of the previouse node (feature <= threshold)
+while node on right does'nt (feature > threshold).
+based on that many data points of diffrent features will be splitted on right and left node.
+for example : we will examine the diffrent features off all the data points that entered the right node , 
+and we choose the one with the minimum impurity
+
+Note : No scaling , Feature independence.
